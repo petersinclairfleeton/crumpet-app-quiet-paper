@@ -7,61 +7,75 @@
 :root {
   --ui-font: Onest, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --title-font: Onest, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --shell: #e7eaf0;
-  --wash: radial-gradient(circle at 6% 0%, color-mix(in srgb, var(--accent) 34%, transparent) 0, transparent 38%), radial-gradient(circle at 96% 100%, rgba(143, 179, 232, 0.42) 0, transparent 42%), #e7eaf0;
-  --side-bg: rgba(246, 247, 250, 0.66);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --r-control: 8px;
+  --r-sheet: 12px;
+  --shell: #e7e8ed;
+  --wash: radial-gradient(circle at 6% 0%, color-mix(in srgb, var(--accent) 28%, transparent) 0, transparent 42%), radial-gradient(circle at 96% 100%, rgba(143, 179, 232, 0.32) 0, transparent 46%), #e7e8ed;
+  --side-bg: rgba(255, 252, 248, 0.58);
   --side-text: #1c1e23;
-  --side-muted: #6b7080;
+  --side-muted: #6e7380;
   --side-sel: #ffffff;
-  --side-hover: rgba(255, 255, 255, 0.6);
-  --page: #ffffff;
-  --list-bg: rgba(255, 255, 255, 0.74);
-  --field: #f2f3f6;
-  --chip: #f2f3f6;
+  --side-hover: rgba(255, 255, 255, 0.55);
+  --page: #fffcf8;
+  --list-bg: rgba(255, 252, 248, 0.62);
+  --field: #f4f1eb;
+  --chip: #f4f1eb;
   --text: #1c1e23;
   --text2: #3e424b;
-  --muted: #6b7080;
-  --line: #e9ebef;
-  --line2: #d6d9e0;
+  --muted: #6e7380;
+  --line: rgba(28, 30, 35, 0.08);
+  --line2: rgba(28, 30, 35, 0.14);
   --danger: #c2362f;
   --accent: #d4a257;
   --accent-ink: var(--accent-ink-light, #6a5130);
-  --accent-soft: var(--accent-soft-light, #f9f1e6);
+  --accent-soft: var(--accent-soft-light, #f8f1e4);
   --on-accent: #2a1f0e;
   --code-bg: var(--field);
   --edge: rgba(255, 255, 255, 0.7);
-  --lift: 0 2px 8px rgba(20, 30, 50, 0.08);
-  --shadow: 0 2px 6px rgba(28, 36, 56, 0.06), 0 18px 44px rgba(28, 36, 56, 0.16);
-  --sheet-shadow: 0 1px 2px rgba(28, 36, 56, 0.05), 0 8px 26px rgba(28, 36, 56, 0.07);
-  --window-shadow: 0 30px 80px rgba(28, 36, 56, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.6);
+  --elev-rest: 0 1px 2px rgba(28, 36, 56, 0.04);
+  --elev-selected: 0 1px 2px rgba(28, 36, 56, 0.05), 0 8px 22px rgba(28, 36, 56, 0.07);
+  --elev-sheet: 0 1px 2px rgba(28, 36, 56, 0.04), 0 12px 32px rgba(28, 36, 56, 0.08);
+  --lift: var(--elev-rest);
+  --shadow: var(--elev-selected);
+  --sheet-shadow: var(--elev-sheet);
+  --window-shadow: 0 1px 2px rgba(28, 36, 56, 0.04), 0 16px 40px rgba(28, 36, 56, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.55);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --shell: #0e1014;
-    --wash: radial-gradient(circle at 6% 0%, color-mix(in srgb, var(--accent) 20%, transparent) 0, transparent 38%), radial-gradient(circle at 96% 100%, rgba(70, 100, 170, 0.3) 0, transparent 42%), #0e1014;
-    --side-bg: rgba(26, 28, 34, 0.62);
-    --side-text: #ecedf0;
-    --side-muted: #8f94a0;
-    --side-sel: rgba(255, 255, 255, 0.1);
-    --side-hover: rgba(255, 255, 255, 0.06);
-    --page: #191b20;
-    --list-bg: rgba(24, 26, 31, 0.72);
-    --field: #24262d;
-    --chip: #24262d;
-    --text: #ecedf0;
-    --text2: #c9ccd3;
-    --muted: #8f94a0;
-    --line: #272a31;
-    --line2: #3a3e47;
+    --shell: #101114;
+    --wash: radial-gradient(circle at 6% 0%, color-mix(in srgb, var(--accent) 16%, transparent) 0, transparent 42%), radial-gradient(circle at 96% 100%, rgba(70, 100, 170, 0.22) 0, transparent 46%), #101114;
+    --side-bg: rgba(28, 26, 24, 0.55);
+    --side-text: #f3efe8;
+    --side-muted: #a39a90;
+    --side-sel: rgba(255, 248, 240, 0.1);
+    --side-hover: rgba(255, 248, 240, 0.06);
+    --page: #221f1c;
+    --list-bg: rgba(34, 31, 28, 0.72);
+    --field: #2c2824;
+    --chip: #2c2824;
+    --text: #f3efe8;
+    --text2: #d8d0c6;
+    --muted: #a39a90;
+    --line: rgba(255, 248, 240, 0.08);
+    --line2: rgba(255, 248, 240, 0.14);
     --danger: #ff8a80;
-    --accent-ink: var(--accent-ink-dark, #ddb978);
-    --accent-soft: var(--accent-soft-dark, #3a3227);
-    --edge: rgba(255, 255, 255, 0.06);
-    --lift: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
-    --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
-    --window-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --accent-ink: var(--accent-ink-dark, #e3c48a);
+    --accent-soft: var(--accent-soft-dark, rgba(212, 162, 87, 0.16));
+    --edge: rgba(255, 248, 240, 0.08);
+    --elev-rest: 0 1px 2px rgba(0, 0, 0, 0.28);
+    --elev-selected: 0 1px 2px rgba(0, 0, 0, 0.32), 0 8px 22px rgba(0, 0, 0, 0.38);
+    --elev-sheet: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+    --lift: var(--elev-rest);
+    --shadow: var(--elev-selected);
+    --sheet-shadow: var(--elev-sheet);
+    --window-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 248, 240, 0.06);
     color-scheme: dark;
   }
 }
@@ -688,11 +702,11 @@ input, select { font: inherit; color: inherit; }
    The sidebar and list are see-through and blurred; notes sit on white
    sheets with rounded corners; buttons, chips and menus are soft and round. */
 [data-look='crumpet'] body { background: var(--wash); background-attachment: fixed; }
-[data-look='crumpet'] .app { padding: 14px; }
-[data-look='crumpet'] .frame { border-radius: 20px; overflow: hidden; box-shadow: var(--window-shadow); }
+[data-look='crumpet'] .app { padding: var(--space-4); }
+[data-look='crumpet'] .frame { border-radius: var(--r-sheet); overflow: hidden; box-shadow: var(--window-shadow); background: var(--list-bg); }
 /* The window stands in from the screen's edges, so the edges that peek the folded sidebar out reach them. */
 [data-look='crumpet'] .peek-edge { position: fixed; width: 24px; }
-[data-look='crumpet'] :is(.sidebar, .rail) { background: var(--side-bg); -webkit-backdrop-filter: blur(30px) saturate(1.6); backdrop-filter: blur(30px) saturate(1.6); border-right: 1px solid var(--edge); }
+[data-look='crumpet'] :is(.sidebar, .rail) { background: var(--side-bg); -webkit-backdrop-filter: blur(28px) saturate(1.5); backdrop-filter: blur(28px) saturate(1.5); border-right: 1px solid var(--edge); }
 [data-look='crumpet'] .sidebar { padding: 14px 10px 12px; gap: 14px; }
 /* (No blur here: what's behind is the soft wash already, and blurring this much of the screen costs drawing time.) */
 [data-look='crumpet'] .workspace { background: var(--list-bg); }
