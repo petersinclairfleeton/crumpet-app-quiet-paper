@@ -288,7 +288,7 @@ export function FormatTools({ editor: ed, readOnly, onLink, sheet, onEditStyles,
     );
   return (
     <>
-      <OverflowRow items={items} fit={fit} />
+      <OverflowRow items={items} fit={fit} quiet={fit} />
       {para.dialog}
       <DefineListHost ed={ed} />
       <TableHost ed={ed} />
