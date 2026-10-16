@@ -25,12 +25,16 @@ export function closeMore(): void {
   window.dispatchEvent(new Event(CLOSE_MORE));
 }
 
-export function OverflowRow({ items, fit = true }: { items: ToolItem[]; fit?: boolean }) {
+export function OverflowRow({ items, fit = true, quiet = false }: { items: ToolItem[]; fit?: boolean; quiet?: boolean }) {
   const row = useRef<HTMLDivElement>(null);
   const widths = useRef(new Map<string, number>());
   const [hidden, setHidden] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
-  const keys = items.map((i) => i.key).join();
+  // Quiet Paper: the pinned bar keeps everyday controls (priority 3 and up).
+  // The rest wait under More, even when the row has room.
+  const resting = quiet ? items.filter((i) => i.pri >= 3) : items;
+  const tucked = quiet ? items.filter((i) => i.pri < 3) : [];
+  const keys = resting.map((i) => i.key).join();
   const measureRef = useRef<() => void>(() => {});
 
   useLayoutEffect(() => {
@@ -44,12 +48,12 @@ export function OverflowRow({ items, fit = true }: { items: ToolItem[]; fit?: bo
       }
       const room = el.clientWidth - 40; // the More button
       const total = (list: ToolItem[]) => list.reduce((n, i) => n + (widths.current.get(i.key) ?? 32) + 2, 0);
-      if (total(items) <= el.clientWidth) {
+      if (total(resting) <= el.clientWidth && tucked.length === 0) {
         setHidden((h) => (h.length ? [] : h));
         return;
       }
-      const keep = [...items];
-      const order = [...items].sort((a, b) => a.pri - b.pri || items.indexOf(b) - items.indexOf(a));
+      const keep = [...resting];
+      const order = [...resting].sort((a, b) => a.pri - b.pri || resting.indexOf(b) - resting.indexOf(a));
       const gone: string[] = [];
       for (const i of order) {
         if (total(keep) <= room) break;
@@ -62,7 +66,7 @@ export function OverflowRow({ items, fit = true }: { items: ToolItem[]; fit?: bo
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [keys, fit]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [keys, fit, quiet]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Tools shown for the first time were only guessed at: once they're drawn, measure again.
   useLayoutEffect(() => {
@@ -79,8 +83,8 @@ export function OverflowRow({ items, fit = true }: { items: ToolItem[]; fit?: bo
     return () => window.removeEventListener(CLOSE_MORE, close);
   }, []);
   // Floating over the text, the bar keeps to the most-used controls.
-  const shown = fit ? items.filter((i) => !hidden.includes(i.key)) : items.filter((i) => i.pri >= 2);
-  const extra = fit ? items.filter((i) => hidden.includes(i.key)) : [];
+  const shown = fit ? resting.filter((i) => !hidden.includes(i.key)) : items.filter((i) => i.pri >= 2);
+  const extra = fit ? [...resting.filter((i) => hidden.includes(i.key)), ...tucked] : [];
   return (
     <div ref={row} className={`tools${fit ? ' fit' : ''}`} onMouseDown={(e) => !(e.target as Element).closest('input, select, textarea') && e.preventDefault()}>
       {shown.map((i, n) => (
