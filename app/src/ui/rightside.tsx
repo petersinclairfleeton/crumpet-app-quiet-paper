@@ -1,6 +1,5 @@
-// The right sidebar, like Obsidian's: helpers for what you're writing, each
-// in a tab: the headings outline, the Styles pane, the Reviewing pane
-// (changes and comments), and links.
+// The right inspector stays closed until it is opened. Everyday helpers
+// (outline, styles, review, links) are the tabs. The rest wait under More.
 
 import { useEffect, useState } from 'react';
 import type { Block } from '@crumpet/editor/model';
@@ -23,6 +22,12 @@ import { ThesaurusTab } from './thesaurus';
 import { sameBookmark, toggleBookmark } from '../data/bookmarks';
 
 export type RightTab = 'outline' | 'pages' | 'check' | 'styles' | 'comments' | 'links' | 'snapshots' | 'writing' | 'thesaurus' | 'clipboard' | 'objects' | 'search';
+
+/** Shown as soon as the inspector opens. */
+const PRIMARY: RightTab[] = ['outline', 'styles', 'comments', 'links'];
+/** Power tools, hidden until More (or until one of them is opened). */
+const ADVANCED: RightTab[] = ['pages', 'snapshots', 'writing', 'check', 'thesaurus', 'clipboard', 'objects', 'search'];
+
 const TABS: { key: RightTab; label: string }[] = [
   { key: 'outline', label: 'Outline' },
   { key: 'pages', label: 'Pages' },
@@ -52,17 +57,34 @@ export function RightSidebar() {
   const store = useAppStore();
   const helped = useHelped();
   const tab: RightTab = state.settings.layout?.rightTab ?? 'outline';
+  const [moreOpen, setMoreOpen] = useState(false);
+  const onAdvanced = ADVANCED.includes(tab);
+  const showAdvanced = moreOpen || onAdvanced;
+  const visible = TABS.filter((t) => PRIMARY.includes(t.key) || (showAdvanced && ADVANCED.includes(t.key)));
   useEdits(helped?.editor ?? null);
   return (
     <aside className="right-side" aria-label="Right sidebar">
       <header className="right-head">
         <div className="right-tabs" role="tablist" aria-label="Helpers">
-          {TABS.map((t) => (
+          {visible.map((t) => (
             <button key={t.key} type="button" role="tab" aria-selected={tab === t.key} className={tab === t.key ? 'on' : ''} onClick={() => store.updateLayout({ rightTab: t.key })}>
               {t.label}
             </button>
           ))}
         </div>
+        <button
+          type="button"
+          className="more-tools"
+          aria-expanded={showAdvanced}
+          onClick={() => {
+            if (showAdvanced && onAdvanced) {
+              setMoreOpen(false);
+              store.updateLayout({ rightTab: 'outline' });
+            } else setMoreOpen(!showAdvanced);
+          }}
+        >
+          {showAdvanced ? 'Fewer tools' : 'More tools'}
+        </button>
         <FoldButton what="right" />
       </header>
       <div className="right-body" role="tabpanel" aria-label={TABS.find((t) => t.key === tab)!.label}>

@@ -774,7 +774,12 @@ input, select { font: inherit; color: inherit; }
 [data-look='crumpet'] .outline-title { font-weight: 600; }
 [data-look='crumpet'] .synopsis { border-radius: 12px; }
 [data-look='crumpet'] .manuscript-title { font-family: var(--title-font); font-weight: 700; letter-spacing: -0.03em; }
-[data-look='crumpet'] .welcome h2 { font-family: var(--title-font); font-weight: 700; letter-spacing: -0.03em; }
+[data-look='crumpet'] .right-side { background: color-mix(in srgb, var(--page) 78%, transparent); -webkit-backdrop-filter: blur(28px) saturate(1.4); backdrop-filter: blur(28px) saturate(1.4); border-left: 1px solid var(--edge); }
+[data-look='crumpet'] .right-head { border-bottom-color: transparent; padding: var(--space-3) var(--space-2) var(--space-2); }
+[data-look='crumpet'] .right-tabs button { border-radius: var(--r-control); font-weight: 500; }
+[data-look='crumpet'] .right-tabs button.on { background: color-mix(in srgb, var(--accent) 14%, var(--page)); box-shadow: none; color: var(--accent-ink); font-weight: 500; }
+[data-look='crumpet'] .right-head .more-tools { border: none; border-radius: var(--r-control); background: transparent; color: var(--muted); font: inherit; font-size: 12.5px; font-weight: 500; padding: 4px 8px; cursor: pointer; }
+[data-look='crumpet'] .welcome h2 { font-family: var(--title-font); font-weight: 600; letter-spacing: -0.03em; }
 [data-look='crumpet'] .welcome .lede { font-family: var(--ui-font); font-style: normal; font-size: 18px; }
 
 /* A first visit: a welcome with three ways to start. */
@@ -887,7 +892,8 @@ body.pane-resizing iframe { pointer-events: none; }
 /* The right sidebar: helpers in tabs. */
 .right-side { flex: 0 0 var(--right-w, 280px); width: var(--right-w, 280px); min-width: 0; display: flex; flex-direction: column; background: var(--list-bg); border-left: 1px solid var(--line); }
 .right-head { flex: none; display: flex; align-items: center; gap: 4px; padding: 8px 8px 6px 10px; border-bottom: 1px solid var(--line); }
-.right-tabs { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 2px; }
+.right-head .more-tools { flex: none; border: none; border-radius: 5px; background: transparent; color: var(--muted); font: inherit; font-size: 12.5px; padding: 4px 8px; cursor: pointer; }
+.right-head .more-tools:hover { color: var(--text); background: color-mix(in srgb, var(--text) 6%, transparent); }
 .right-tabs button { flex: none; padding: 4px 8px; border: none; border-radius: 5px; background: transparent; color: var(--muted); font: inherit; font-size: 12.5px; cursor: pointer; }
 .right-tabs button:hover { color: var(--text); background: color-mix(in srgb, var(--text) 6%, transparent); }
 .right-tabs button.on { color: var(--text); background: var(--page); box-shadow: 0 0 0 1px var(--line); font-weight: 600; }
