@@ -779,6 +779,15 @@ input, select { font: inherit; color: inherit; }
 [data-look='crumpet'] .right-tabs button { border-radius: var(--r-control); font-weight: 500; }
 [data-look='crumpet'] .right-tabs button.on { background: color-mix(in srgb, var(--accent) 14%, var(--page)); box-shadow: none; color: var(--accent-ink); font-weight: 500; }
 [data-look='crumpet'] .right-head .more-tools { border: none; border-radius: var(--r-control); background: transparent; color: var(--muted); font: inherit; font-size: 12.5px; font-weight: 500; padding: 4px 8px; cursor: pointer; }
+[data-look='crumpet'] .outline-chapter { border-radius: var(--r-control); }
+[data-look='crumpet'] .outline-chapter:hover { background: color-mix(in srgb, var(--page) 55%, transparent); }
+[data-look='crumpet'] .outline-chapter.selected { background: color-mix(in srgb, var(--accent) 14%, var(--page)); box-shadow: var(--elev-rest); }
+[data-look='crumpet'] .outline-part { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: none; }
+[data-look='crumpet'] .chapter-kicker { font-weight: 600; letter-spacing: 0.04em; }
+[data-look='crumpet'] .manuscript-title { font-weight: 600; }
+[data-look='crumpet'] .corkboard { background: transparent; gap: var(--space-4); padding: var(--space-5); }
+[data-look='crumpet'] .cork-card { border-radius: var(--r-sheet); border-color: transparent; background: var(--page); box-shadow: var(--elev-rest); }
+[data-look='crumpet'] .cork-part { font-weight: 600; }
 [data-look='crumpet'] .welcome h2 { font-family: var(--title-font); font-weight: 600; letter-spacing: -0.03em; }
 [data-look='crumpet'] .welcome .lede { font-family: var(--ui-font); font-style: normal; font-size: 18px; }
 

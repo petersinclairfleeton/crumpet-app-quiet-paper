@@ -86,7 +86,7 @@ const CHAPTERS: Chapter[] = [
     points: [
       { title: 'Chapters and parts', text: 'Start a project from Projects in the sidebar. Each chapter has a status (to do, draft, revised, done), a synopsis and a word goal.' },
       { title: 'Three ways to see it', text: 'Chapter to write one at a time, Manuscript to read the whole book, Cards to plan on an index-card board and drag chapters into order.' },
-      { title: 'Looks like a manuscript', text: 'Chapters use manuscript format (or Book, or your own styles), with page numbers that run through the whole book.' },
+      { title: 'Looks like a manuscript', text: 'Chapters use manuscript format (or Book, or your own styles), with page numbers that run through the whole book. On screen the chapter is the same quiet paper sheet as a note.' },
       { title: 'Goals and deadlines', text: 'Set a word goal and a deadline for the book; Writing stats keeps your daily words and streaks.' },
     ],
     pictures: [
